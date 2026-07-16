@@ -6,6 +6,9 @@ Scripts:
 3. download_cyano.sh - this script downloads genomes from a file called an input text file containing one genome accession per line.
 4. prokka annotate - this script takes downloaded genome fasta files and annotates them using the program "prokka" (a pre-req for panaroo)
 
+Plain texts:
+Nibi_cyanobacteria.txt - gives instructions on starting off on Nibi. Explains how to download genomes, download prokka / panaroo, etc. 
+
 Some use cases:
 If starting with a contig accession.version (e.g. BX548174.1), use pipeline of:
 getassemblyaccession.sh --> get_cyano_ftp.sh --> download_cyano.sh --> fully downloaded genome on server for prokka/panaroo
