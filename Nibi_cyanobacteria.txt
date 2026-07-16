@@ -1,0 +1,51 @@
+### HOW-TO GUIDE ON STARTING OUT WITH NIBI AND PROKKA/PANAROO
+### CREATED BY MICHAEL YOSHIDA FOR THE TAI LAB, 2026.
+
+### STARTING WITH .TXT FILE WITH GCF LIST, EACH GCF ON ITS OWN LINE (e.g. no_MAG_assembly_accessions.txt)
+
+# create directory for the downloaded genome archive
+mkdir -p genomes
+
+# download the genomic FASTA and GFF3 files for every accession
+/project/def-vtai4/kyoshid2/bin/datasets download genome accession \
+--inputfile /project/def-vtai4/kyoshid2/no_MAG_assembly_accessions.txt \
+--include genome,gff3 \
+--filename no_MAG_genomes.zip
+
+# extract downloaded NCBI datasets
+unzip genomes/no_MAG_genomes.zip -d genomes/no_MAG_ncbi_dataset
+
+# find all downloaded genomic fastas file and sort them to a list ("no_MAG_fna_list.txt")
+find genomes/no_MAG_ncbi_dataset/ncbi_dataset/data \
+-name "*_genomic.fna" \
+| sort > no_MAG_fna_list.txt
+
+# confirm how many genomes downloaded
+wc -l no_MAG_fna_list.txt   # should be ~1571 (in my use case)
+head no_MAG_fna_list.txt 
+
+# load apptainer (needed to run Prokka/Panaroo)
+module load apptainer/1.3.5
+
+# load prokka container 
+apptainer exec docker://quay.io/biocontainers/prokka:1.14.6--pl5321hdfd78af_5 \
+prokka --version
+
+# load panaroo container
+apptainer exec docker://quay.io/biocontainers/panaroo:1.5.2--pyhdfd78af_0 \
+panaroo --help
+
+## FOR PROKKA COMMAND SEE "prokka_noMAG.slurm"
+
+# after running prokka find the Prokka-generated GFFs and save their paths. (Panaroo uses these as an input)
+find prokka_noMAG -name "*.gff" | sort > panaroo_gff_list.txt
+wc -l panaroo_gff_list.txt   
+head panaroo_gff_list.txt
+
+## RUN PANAROO (SEE "panaroo_noMAG_80.slurm")
+
+# how to run job after creating slurm file (e.g. job.slurm):
+sbatch job.slurm
+
+# check job status (replace kyoshid2 with your username)
+squeue -u kyoshid2
