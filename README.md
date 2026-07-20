@@ -5,11 +5,14 @@ Scripts:
 2. get_cyano_ftp.sh - this script takes the GCF identifier and finds the NCBI FTP for genome download onto a server
 3. download_cyano.sh - this script downloads genomes from a file called an input text file containing one genome accession per line.
 4. prokka_annotate.sh - this script takes downloaded genome fasta files and annotates them using the program "prokka" (a pre-req for panaroo)
+5. prokka_noMAG.slurm - sample call for Prokka with notes on arguments
+6. panaroo_noMAG_80.slurm - sample call for Panaroo with notes on arguments
+7. panaroobinary2.py - takes panaroo output and converts it to .phy format for RaxML
 
 Plain texts:
-Nibi_cyanobacteria.txt - gives instructions on starting off on Nibi. Explains how to download genomes, download prokka / panaroo, etc. 
-RaxML.txt - gives command to run RaxML and general information on the program
-twocolumntsv.txt - instructions on how to create required metadata file prior to RaxML call
+1. Nibi_cyanobacteria.txt - gives instructions on starting off on Nibi. Explains how to download genomes, download prokka / panaroo, etc.
+2. RaxML.txt - gives command to run RaxML and general information on the program
+3. twocolumntsv.txt - instructions on how to create required metadata file prior to RaxML call
 
 
 Some use cases:
