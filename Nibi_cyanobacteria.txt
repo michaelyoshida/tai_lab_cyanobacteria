@@ -45,6 +45,8 @@ head panaroo_gff_list.txt
 ## RUN PANAROO (SEE "panaroo_noMAG_80.slurm")
 
 ## RUN panaroobinary2.py to convert Panaroo binary gene matrix to .phy for RaxML
+## for this step, you will need a .tsv file that has genomes as rows and two columns, one with GCF # and other with scientific name.
+## to create the .tsv, see the "twocolumntsv.txt" file
 
 ## RUN RaxML (see RaxML.txt).
 
