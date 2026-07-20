@@ -1,0 +1,11 @@
+## BASH Script to create metadata .tsv file for RaxML from original assembly accesions.txt (containing only GCF numbers)
+## Created by Michael Yoshida, for the Tai Lab, 2025.
+
+## input is .txt file with GCF numbers
+## output is .tsv file with genomes as rows, with two columns, one with GCF #, other with scientific name
+
+while IFS= read -r GCF <&3; do
+esearch -db assembly -query "$GCF" \
+| esummary \
+| xtract -pattern DocumentSummary -element AssemblyAccession,SpeciesName
+done 3< MAG_assembly_accessions.txt > mag_with_organism_name.tsv
