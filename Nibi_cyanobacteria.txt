@@ -44,6 +44,10 @@ head panaroo_gff_list.txt
 
 ## RUN PANAROO (SEE "panaroo_noMAG_80.slurm")
 
+## RUN panaroobinary2.py to convert Panaroo binary gene matrix to .phy for RaxML
+
+## RUN RaxML (see RaxML.txt)
+
 # how to run job after creating slurm file (e.g. job.slurm):
 sbatch job.slurm
 
