@@ -4,10 +4,13 @@ Scripts:
 1. getassemblyaccessions.sh - this script takes contig accession.version codes and finds the corresponding GCF identifier
 2. get_cyano_ftp.sh - this script takes the GCF identifier and finds the NCBI FTP for genome download onto a server
 3. download_cyano.sh - this script downloads genomes from a file called an input text file containing one genome accession per line.
-4. prokka annotate - this script takes downloaded genome fasta files and annotates them using the program "prokka" (a pre-req for panaroo)
+4. prokka_annotate.sh - this script takes downloaded genome fasta files and annotates them using the program "prokka" (a pre-req for panaroo)
 
 Plain texts:
 Nibi_cyanobacteria.txt - gives instructions on starting off on Nibi. Explains how to download genomes, download prokka / panaroo, etc. 
+RaxML.txt - gives command to run RaxML and general information on the program
+twocolumntsv.txt - instructions on how to create required metadata file prior to RaxML call
+
 
 Some use cases:
 If starting with a contig accession.version (e.g. BX548174.1), use pipeline of:
