@@ -1,0 +1,31 @@
+# RAxML presence/absence phylogeny
+# Uses BINGAMMA because the Panaroo alignment contains both
+# variable and invariant binary columns.
+
+# Script created for the Tai Lab by Michael Yoshida, 2025. 
+
+# nohup allows the analysis to continue after disconnecting.
+# The analysis performs 100 rapid bootstrap replicates followed
+# by a search for the best-scoring maximum-likelihood tree.
+
+nohup raxmlHPC \
+  -f a \
+  -m BINGAMMA \
+  -p 12345 \
+  -x 12345 \
+  -# 100 \ # number of bootstrap replicates
+  -s pa_with_species_labels.clean.phy \
+  -n presence_absence_80_noasc \
+  > raxml_presence_absence_80_noasc.log 2>&1 &
+
+# to see progress updates:
+tail -f raxml_presence_absence_80_noasc.log
+
+# Final tree:
+# RAxML_bipartitions.presence_absence_80_noasc
+#
+# Best-scoring maximum-likelihood tree:
+# RAxML_bestTree.presence_absence_80_noasc
+#
+# Bootstrap trees:
+# RAxML_bootstrap.presence_absence_80_noasc
